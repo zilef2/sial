@@ -23,9 +23,6 @@ return new class extends Migration
             $table->string('sexo')->default('Masculino');
             $table->dateTime('fecha_nacimiento')->nullable();
             $table->string('celular')->nullable();
-            $table->integer('esLider')->default(0);
-            $table->string('area')->nullable();
-            $table->string('agregado')->nullable();
 
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

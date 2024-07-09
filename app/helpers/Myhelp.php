@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Log;
 
 class Myhelp {
 
-    public static function AuthU(): \Illuminate\Contracts\Auth\Authenticatable
+    public static function AuthU(): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Auth\Authenticatable
     {
         $TheUser = Auth::user();
         if($TheUser){

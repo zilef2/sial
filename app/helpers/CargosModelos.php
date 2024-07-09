@@ -15,8 +15,8 @@ class CargosModelos {
     public static function CargosYModelos() {
         //otros cargos NO_ADMIN
         $nombresDeCargos = [
-            'administrativo',
-            'lider',
+            'empleado',
+            'jefe',
         ];
         $isSome = [];
         foreach ($nombresDeCargos as $key => $value) {
@@ -36,6 +36,44 @@ class CargosModelos {
             'isSome' => $isSome,
         ];
     }
+
+    //<editor-fold desc="zona estatica y permisos">
+    public static function WebVueModels()
+    {
+        return [
+            'venta',
+        ];
+    }
+
+    public static function WebModels()
+    {
+        return array_merge(self::WebVueModels(), [
+            'permission',
+            'user',
+            'role',
+        ]);
+    }
+
+    public static function WebVueModels_side()
+    {
+        return [
+            'venta',
+        ];
+    }
+
+    public static function CrudCompletou()
+    {
+        return [
+            'delete',
+            'update',
+            'read',
+            'create',
+            'specifyUpdate'
+        ];
+    }
+    //</editor-fold>
+    
+    
 }
 
 ?>

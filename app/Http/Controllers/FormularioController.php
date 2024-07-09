@@ -77,25 +77,6 @@ class FormularioController extends Controller
 
     //toinfo: SE VALIDAN si el doc ya evaluó o no
     public function welcome(Request $request){
-        $UIDformulariosYaDiligenciados = Formulario::Where('enviado', 1)->pluck('user_id')->unique();
-        $UIDformulariosGuardados = Formulario::Where('enviado', 0)->pluck('user_id')->unique();
-        $losSelect = $this->Dependencias();
-
-        $cedLideresDiligenciados = User::Where('esLider', 1)
-            ->WhereIn('id', $UIDformulariosYaDiligenciados)
-            ->get()->mapWithKeys(function ($user) {
-                return [
-                    $user->identificacion => [
-                        'name' => $user->name,
-                        'email' => 'YaDiligenciado',
-                    ],
-                ];
-            }
-            )->toArray();
-        $cedlideres = $this->getcedLideres($request);
-        
-        
-        $infoEnviada = $this->InfoEnviada($request->identUser);
 
         
         return Inertia::render('Welcome', [
@@ -103,16 +84,8 @@ class FormularioController extends Controller
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
-            'losSelect' => $losSelect,
-            'TodosDiligenciados' => false,
-
-            'cedLideresDiligenciados' => $cedLideresDiligenciados,
-
-            'infoEnviada' => $infoEnviada,
-            
             //lazy loads
-            'cedLideres' => Inertia::lazy(fn() => $cedlideres),
-            'cedLideresGuardados' => Inertia::lazy(fn() => $this->getcedLideresGuardados($request)),
+            'cedLideres' => Inertia::lazy(fn() => 1),
         ]);
     }
 

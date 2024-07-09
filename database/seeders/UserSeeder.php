@@ -48,8 +48,8 @@ class UserSeeder extends Seeder
         
         //baja categoria
         $nombresGenericos = [
-            'jose_administrativo' => '1152888999',
-            'madrid_administrativo' => '1152888199',
+            'jose_generico' => '1234444',
+            'madrid_generico' => '12355555',
         ];
 
         // $genero = 'Femenino';
@@ -66,10 +66,7 @@ class UserSeeder extends Seeder
                 'fecha_nacimiento' => $anios,
                 'sexo' => $genero,
             ]);
-//            if($yearRandom < 20)
-                $unUsuario->assignRole('administrativo');
-//            else
-//                $unUsuario->assignRole('lider');
+                $unUsuario->assignRole('jefe');
         }
     }
 }
